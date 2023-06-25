@@ -16,25 +16,6 @@ services:
       - '27017:27017'
     volumes:
       - mongodb-data:/data/db
-  
-  app-test:
-    build: .
-    ports:
-      - '3001:3001'
-    environment:
-      - MONGO_DB=mongodb://mongodb-test:27017/mydatabase
-      - PORT=3001
-    command: ["npm", "run", "test"]
-    depends_on:
-      - mongodb-test
-
-  mongodb-test:
-    image: mongo
-    ports:
-      - '27018:27017'
-    volumes:
-      - mongodb-test-data:/data/db
-
 volumes:
   mongodb-data:
   mongodb-test-data:
