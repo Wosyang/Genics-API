@@ -1,5 +1,5 @@
 const request = require('supertest');
-const index = require('../index');
+const app = require('../index');
 
 describe('/products API', () => {
     let createdProductId;
