@@ -1,16 +1,16 @@
 const request = require('request');
 const app = require('../index'); // assuming your Express app is defined in index.js
+// Get app Port
+
 
 describe('User API', () => {
-    let createdUserId;
+    const endpoint = `http://localhost:${process.env.PORT}/users`
 
     describe('GET /users', () => {
         test('GET /users should return an array of users', (done) => {
-            const endpoint = 'http://localhost:3000/users'
-
             request.get(endpoint, (error, response, body) => {
                 expect(response.statusCode).toBe(200);
-                expect(JSON.parse(body)).toEqual(expect.any(Array));
+                expect(JSON.parse(body.data)).toEqual(expect.any(Array));
                 done();
             });
         })
@@ -18,7 +18,6 @@ describe('User API', () => {
 
     describe('POST /users'), () => {
         test('POST /users should create a new user', (done) => {
-            const endpoint = 'http://localhost:3000/users'; // Adjust the URL based on your API endpoint
             const user = {
                 name: 'John Doe',
                 age: 25
