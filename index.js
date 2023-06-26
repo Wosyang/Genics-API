@@ -18,12 +18,13 @@ const usersRoute = require("./routes/users");
 const productsRoute = require("./routes/products");
 
 //DB connection
+console.log(process.env.MONGO_DB);
 connect(`${process.env.MONGO_DB}`)
   .then(() => console.log("DB Connected!!"))
   .catch((error) => console.log(error));
 
 //Server
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("Server is running on http://localhost:" + process.env.PORT);
 });
 
